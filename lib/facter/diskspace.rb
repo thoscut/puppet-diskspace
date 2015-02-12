@@ -1,5 +1,4 @@
 require 'facter'
-require 'pry'
 
 if Facter.value(:kernel) == 'Linux'
   df      = '/bin/df'
