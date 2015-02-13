@@ -5,7 +5,7 @@ if Facter.value(:kernel) == 'Linux'
   pattern = '^([/\w\-\.:]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)'
   dmatch  = 6
   umatch  = 5
-elsif Facter.value(:kernel) == 'AIX'
+elsif Facter.value(:kernel) == 'Darwin'
   df      = '/usr/bin/df'
   pattern = '^(?:map )?([/\w\-\.:\-]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:\-]+)'
   dmatch  = 9
