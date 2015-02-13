@@ -18,7 +18,6 @@ mounts_array = mounts.split("\n")
 mounts_array.each do |line|
   m = /#{pattern}/.match(line)
   if m
-    binding.pry
     fs = m[dmatch].gsub(/^\/$/, 'root')
     fs = fs.gsub(/[\/\.:\-]/, '')
     Facter.add("diskspace_#{fs}") do
