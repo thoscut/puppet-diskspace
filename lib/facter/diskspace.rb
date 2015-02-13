@@ -13,7 +13,7 @@ when 'Darwin'
   umatch  = 5
 end
 
-mounts = Facter::Core::Execution.exec(df)
+mounts = Facter::Util::Resolution.exec(df)
 mounts_array = mounts.split("\n")
 mounts_array.each do |line|
   m = /#{pattern}/.match(line)
