@@ -21,6 +21,7 @@ mounts_array.each do |line|
     fs = m[dmatch].gsub(/^\/$/, 'root')
     fs = fs.gsub(/[\/\.:\-]/, '')
     Facter.add("diskspace_#{fs}") do
+      confine :kernel => [ 'Linux', 'AIX', 'Darwin' ]
       setcode do
         m[umatch].to_i
       end
