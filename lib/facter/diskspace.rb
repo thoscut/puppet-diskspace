@@ -1,13 +1,15 @@
 require 'facter'
+require 'pry'
 
-if Facter.value(:kernel) == 'Linux'
+case Facter.value(:kernel)
+when 'Linux','AIX'
   df      = '/bin/df -P'
   pattern = '^([/\w\-\.:]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)'
-  dmatch  = 7
+  dmatch  = 6
   umatch  = 5
-elsif Facter.value(:kernel) == 'Darwin'
-  df      = '/usr/bin/df'
-  pattern = '^(?:map )?([/\w\-\.:\-]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:\-]+)'
+when 'Darwin'
+  df      = '/usr/bin/df -P'
+  pattern = '^(?:map )?([/\w\-\.:\-]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)'
   dmatch  = 9
   umatch  = 5
 end
@@ -17,6 +19,7 @@ mounts_array = mounts.split("\n")
 mounts_array.each do |line|
   m = /#{pattern}/.match(line)
   if m
+    binding.pry
     fs = m[dmatch].gsub(/^\/$/, 'root')
     fs = fs.gsub(/[\/\.:\-]/, '')
     Facter.add("diskspace_#{fs}") do
