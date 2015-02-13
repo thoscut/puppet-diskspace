@@ -1,5 +1,4 @@
 require 'facter'
-require 'pry'
 
 case Facter.value(:kernel)
 when 'Linux','AIX'
