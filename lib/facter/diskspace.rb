@@ -1,9 +1,9 @@
 require 'facter'
 
 if Facter.value(:kernel) == 'Linux'
-  df      = '/bin/df'
+  df      = '/bin/df -P'
   pattern = '^([/\w\-\.:]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)'
-  dmatch  = 6
+  dmatch  = 7
   umatch  = 5
 elsif Facter.value(:kernel) == 'Darwin'
   df      = '/usr/bin/df'
