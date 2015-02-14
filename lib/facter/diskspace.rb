@@ -6,7 +6,7 @@ kernel = Facter.value(:kernel)
 case kernel
 when 'Linux','AIX'
   df      = '/bin/df -P'
-  pattern = '^([/\w\-\.:]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)'
+  pattern = '^(?:map )?([/\w\-\.:\-]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)'
   dmatch  = 6
   umatch  = 5
 when 'Darwin'
