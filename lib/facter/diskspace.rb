@@ -1,10 +1,10 @@
 require 'facter'
 
-$supported_os = [ 'Linux', 'AIX', 'Darwin',  'windows' ]
+$supported_os = [ 'Linux', 'AIX', 'FreeBSD', 'Darwin',  'windows' ]
 kernel = Facter.value(:kernel)
 
 case kernel
-when 'Linux','AIX'
+when 'Linux','AIX','FreeBSD'
   df      = '/bin/df -P'
   pattern = '^(?:map )?([/\w\-\.:\-]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)'
   dmatch  = 6
