@@ -12,7 +12,7 @@ when 'Linux','AIX','FreeBSD'
 when 'Darwin'
   df      = '/usr/bin/df -P'
   pattern = '^(?:map )?([/\w\-\.:\-]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)'
-  dmatch  = 9
+  dmatch  = 6
   umatch  = 5
 when 'windows'
   df      = 'C:\Windows\System32\wbem\WMIC.exe logicaldisk get deviceid,freespace,size'
