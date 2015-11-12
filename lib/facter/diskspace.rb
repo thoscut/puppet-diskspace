@@ -10,7 +10,7 @@ when 'Linux','AIX','FreeBSD'
   dmatch  = 6
   umatch  = 5
 when 'Darwin'
-  df      = '/usr/bin/df -P'
+  df      = '/bin/df -P'
   pattern = '^(?:map )?([/\w\-\.:\-]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)'
   dmatch  = 6
   umatch  = 5
