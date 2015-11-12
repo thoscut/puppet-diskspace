@@ -45,6 +45,14 @@
         "6.1",
         "7.1"
       ]
+    },
+    {
+      "operatingsystem": "FreeBSD",
+      "operatingsystemrelease": [
+        "8",
+        "9",
+        "10"
+      ]
     }
   ],
   "dependencies": [
