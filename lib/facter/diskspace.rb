@@ -1,6 +1,6 @@
 require 'facter'
 
-$supported_os = [ 'Linux', 'AIX', 'FreeBSD', 'Darwin',  'windows' ]
+$supported_os = [ 'Linux', 'AIX', 'FreeBSD', 'Darwin',  'windows', 'SunOS' ]
 kernel = Facter.value(:kernel)
 
 case kernel
@@ -9,15 +9,25 @@ when 'Linux','AIX','FreeBSD'
   pattern = '^(?:map )?([/\w\-\.:\-]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)'
   dmatch  = 6
   umatch  = 5
+  fmatch  = 4
 when 'Darwin'
   df      = '/bin/df -P'
   pattern = '^(?:map )?([/\w\-\.:\-]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)'
   dmatch  = 6
   umatch  = 5
+  fmatch  = 4
+when 'SunOS'
+  df      = '/usr/bin/df -k'
+  pattern = '^(?:map )?([/\w\-\.:\-]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)'
+  dmatch  = 6
+  umatch  = 5
+  fmatch  = 4
 when 'windows'
   df      = 'C:\Windows\System32\wbem\WMIC.exe logicaldisk get deviceid,freespace,size'
   pattern = '^([A-Z]:)\s+(\d+)\s+(\d+)'
   dmatch  = 1
+  fmatch  = 2
+  tmatch  = 3  # total size
 end
 
 if $supported_os.include? kernel
@@ -31,9 +41,11 @@ if $supported_os.include? kernel
       if kernel == 'windows' 
         # Windows doesn't report percentages but bytes
         # Choosing to do the math and round down
-        used = ((1 - (m[2].to_f/m[3].to_f))*100).floor
+        used = ((1 - (m[fmatch].to_f/m[tmatch].to_f))*100).floor
+        freekb = (m[fmatch].to_f/1024).floor
       else
         used = m[umatch].to_i
+        freekb = m[fmatch].to_i
       end
       Facter.add("diskspace_#{fs}") do
         confine :kernel => $supported_os
@@ -45,6 +57,12 @@ if $supported_os.include? kernel
         confine :kernel => $supported_os
         setcode do
           100 - used
+        end
+      end
+      Facter.add("diskspacefreekb_#{fs}") do
+        confine :kernel => $supported_os
+        setcode do
+          freekb
         end
       end
     end
