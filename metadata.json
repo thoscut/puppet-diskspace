@@ -3,10 +3,11 @@
   "version": "0.1.1",
   "author": "WhatsARanjit",
   "summary": "Facts for diskspace used and free",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/WhatsARanjit/puppet-diskspace",
   "project_page": "https://github.com/WhatsARanjit/puppet-diskspace",
   "issues_url": "https://github.com/WhatsARanjit/puppet-diskspace/issues",
+  "tags": ["disk", "space", "facter", "facts"],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
@@ -52,6 +53,22 @@
         "8",
         "9",
         "10"
+      ]
+    },
+    {
+      "operatingsystem":"Windows"
+    },
+    {
+      "operatingsystem":"Solaris"
+    },
+    {
+      "operatingsystem":"Darwin"
+    },
+    {
+      "operatingsystem":"OracleLinux",
+      "operatingsystemrelease": [
+        "6",
+        "7"
       ]
     }
   ],
