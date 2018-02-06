@@ -1,4 +1,4 @@
-#Diskspace facts
+# Diskspace facts
 
 ## Overview
 
@@ -7,7 +7,7 @@ Filesystems entitled ```/``` will be listed as ```root``` instead.
 
 ## Examples
 
-###*nix style systems
+### *nix style systems
 ```
 # facter -p | grep diskspace
 diskspace_boot => 35
@@ -24,14 +24,10 @@ diskspacetotalkb_dev => 32962776
 diskspacetotalkb_root => 49181880
 ```
 
-###Windows systems
+### Windows systems
 ```
 C:\>facter -p | find "diskspace"
 diskspace_c => 17
 diskspacefree_c => 83
 diskspacefreekb_c => 69533888
 ```
-
-
-
-
