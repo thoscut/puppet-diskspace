@@ -10,21 +10,18 @@ Filesystems entitled ```/``` will be listed as ```root``` instead.
 ###*nix style systems
 ```
 # facter -p | grep diskspace
-diskspace_boot => 15
-diskspace_devshm => 0
-diskspace_home => 20
-diskspace_root => 25
-diskspace_var => 14
-diskspacefree_boot => 85
-diskspacefree_devshm => 100
-diskspacefree_home => 80
-diskspacefree_root => 75
-diskspacefree_var => 86
-diskspacefreekb_boot => 401675
-diskspacefreekb_devshm => 961780
-diskspacefreekb_home => 1568664
-diskspacefreekb_root => 5206584
-diskspacefreekb_var => 3407840
+diskspace_boot => 35
+diskspace_dev => 1
+diskspace_root => 42
+diskspacefree_boot => 65
+diskspacefree_dev => 99
+diskspacefree_root => 58
+diskspacefreekb_boot => 150679
+diskspacefreekb_dev => 32962772
+diskspacefreekb_root => 27438040
+diskspacetotalkb_boot => 240780
+diskspacetotalkb_dev => 32962776
+diskspacetotalkb_root => 49181880
 ```
 
 ###Windows systems
