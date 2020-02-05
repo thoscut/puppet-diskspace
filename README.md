@@ -7,29 +7,42 @@ Filesystems entitled ```/``` will be listed as ```root``` instead.
 
 ## Examples
 
+|Fact prefix|Unit|
+|-----------|----|
+|diskspace_used_percent_|%|
+|diskspace_free_percent_|%|
+|diskspace_used_kb_|kb|
+|diskspace_free_kb_|kb|
+|diskspace_total_kb_|kb|
+
 ### *nix style systems
 
 ```bash
-# facter -p | grep diskspace
-diskspace_boot => 35
-diskspace_dev => 1
-diskspace_root => 42
-diskspacefree_boot => 65
-diskspacefree_dev => 99
-diskspacefree_root => 58
-diskspacefreekb_boot => 150679
-diskspacefreekb_dev => 32962772
-diskspacefreekb_root => 27438040
-diskspacetotalkb_boot => 240780
-diskspacetotalkb_dev => 32962776
-diskspacetotalkb_root => 49181880
+# puppet facts|grep diskspace
+"diskspace_free_kb_boot": 324314,
+"diskspace_free_kb_bootefi": 184680,
+"diskspace_free_kb_root": 64940456,
+"diskspace_free_percent_boot": 67,
+"diskspace_free_percent_bootefi": 90,
+"diskspace_free_percent_root": 89,
+"diskspace_total_kb_boot": 487634,
+"diskspace_total_kb_bootefi": 204580,
+"diskspace_total_kb_root": 73474080,
+"diskspace_used_kb_boot": 163320,
+"diskspace_used_kb_bootefi": 19900,
+"diskspace_used_kb_root": 8533624,
+"diskspace_used_percent_boot": 33,
+"diskspace_used_percent_bootefi": 10,
+"diskspace_used_percent_root": 11,
 ```
 
 ### Windows systems
 
 ```cmd
-C:\>facter -p | find "diskspace"
-diskspace_c => 17
-diskspacefree_c => 83
-diskspacefreekb_c => 69533888
+# puppet facts|findstr -i diskspace
+"diskspace_free_kb_c": 23625804,
+"diskspace_free_percent_c": 34,
+"diskspace_total_kb_c": 71086076,
+"diskspace_used_kb_c": 47460272,
+"diskspace_used_percent_c": 66,
 ```

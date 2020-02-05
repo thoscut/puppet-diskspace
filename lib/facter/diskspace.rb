@@ -45,15 +45,24 @@ if supported_os.include? kernel
       used    = ((1 - (m[fmatch].to_f / m[tmatch].to_f)) * 100).floor
       freekb  = (m[fmatch].to_f / 1024).floor
       totalkb = (m[tmatch].to_f / 1024).floor
+      usedkb  = (totalkb - freekb).floor
     else
       used    = m[umatch].to_i
       freekb  = m[fmatch].to_i
       totalkb = m[tmatch].to_i
+      usedkb  = (totalkb - freekb).to_i
+
     end
-    Facter.add("diskspace_used_#{fs}") do
+    Facter.add("diskspace_used_percent_#{fs}") do
       confine kernel: supported_os
       setcode do
         used
+      end
+    end
+    Facter.add("diskspace_used_kb_#{fs}") do
+      confine kernel: supported_os
+      setcode do
+        usedkb
       end
     end
     Facter.add("diskspace_total_kb_#{fs}") do
@@ -62,7 +71,7 @@ if supported_os.include? kernel
         totalkb
       end
     end
-    Facter.add("diskspace_free_#{fs}") do
+    Facter.add("diskspace_free_percent_#{fs}") do
       confine kernel: supported_os
       setcode do
         100 - used
