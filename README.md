@@ -8,7 +8,8 @@ Filesystems entitled ```/``` will be listed as ```root``` instead.
 ## Examples
 
 ### *nix style systems
-```
+
+```bash
 # facter -p | grep diskspace
 diskspace_boot => 35
 diskspace_dev => 1
@@ -25,7 +26,8 @@ diskspacetotalkb_root => 49181880
 ```
 
 ### Windows systems
-```
+
+```cmd
 C:\>facter -p | find "diskspace"
 diskspace_c => 17
 diskspacefree_c => 83

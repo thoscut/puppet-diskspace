@@ -1,13 +1,18 @@
 {
-  "name": "WhatsARanjit-diskspace",
-  "version": "0.2.0",
+  "name": "marcinbojko-diskspace",
+  "version": "0.2.1",
   "author": "WhatsARanjit",
   "summary": "Facts for diskspace used and free",
   "license": "Apache-2.0",
   "source": "https://github.com/WhatsARanjit/puppet-diskspace",
   "project_page": "https://github.com/WhatsARanjit/puppet-diskspace",
   "issues_url": "https://github.com/WhatsARanjit/puppet-diskspace/issues",
-  "tags": ["disk", "space", "facter", "facts"],
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0 < 7.0.0"
+    }
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
@@ -66,7 +71,9 @@
       "operatingsystemrelease": [
         "10.04",
         "12.04",
-        "14.04"
+        "14.04",
+        "16.04",
+        "18.04"
       ]
     },
     {
@@ -86,8 +93,11 @@
         "Server 2008 R2",
         "Server 2012",
         "Server 2012 R2",
+        "Server 2016",
+        "Server 2019",
         "7",
-        "8"
+        "8",
+        "10"
       ]
     },
     {
@@ -99,8 +109,19 @@
       ]
     }
   ],
-  "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
-  ]
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.10.0 < 7.0.0"
+    }
+  ],
+  "tags": [
+    "disk",
+    "space",
+    "facter",
+    "facts"
+  ],
+  "pdk-version": "1.15.0",
+  "template-url": "pdk-default#1.15.0",
+  "template-ref": "tags/1.15.0-0-g0bc522e"
 }
-

@@ -1,9 +1,9 @@
-supported_os = %w[Linux AIX FreeBSD Darwin windows SunOS]
+supported_os = ['Linux', 'AIX', 'FreeBSD', 'Darwin', 'windows', 'SunOS']
 kernel       = Facter.value(:kernel)
 
 case kernel
 when 'Linux', 'AIX', 'FreeBSD'
-  df      = '/bin/df -P'
+  df      = '/bin/df -P| sed -n "1p;/^\//p;"'
   pattern = '^(?:map )?([/\w\-\.:\-]+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+([/\w\-\.:]+)'
   dmatch  = 6
   umatch  = 5
@@ -32,10 +32,10 @@ when 'windows'
 end
 
 if supported_os.include? kernel
-  mounts       = Facter::Util::Resolution.exec(df)
-  mounts_array = mounts.split(/[\r\n]+/)
+  mounts = Facter::Util::Resolution.exec(df)
+  mounts_array = mounts.split(%r{[\r\n]})
   mounts_array.each do |line|
-    m = /#{pattern}/.match(line)
+    m = %r{#{pattern}}.match(line)
     next unless m
     fs = m[dmatch].gsub(%r{^\/$}, 'root')
     fs = fs.gsub(%r{[\/\.:\-]}, '')
@@ -50,25 +50,25 @@ if supported_os.include? kernel
       freekb  = m[fmatch].to_i
       totalkb = m[tmatch].to_i
     end
-    Facter.add("diskspace_#{fs}") do
+    Facter.add("diskspace_used_#{fs}") do
       confine kernel: supported_os
       setcode do
         used
       end
     end
-    Facter.add("diskspacetotalkb_#{fs}") do
+    Facter.add("diskspace_total_kb_#{fs}") do
       confine kernel: supported_os
       setcode do
         totalkb
       end
     end
-    Facter.add("diskspacefree_#{fs}") do
+    Facter.add("diskspace_free_#{fs}") do
       confine kernel: supported_os
       setcode do
         100 - used
       end
     end
-    Facter.add("diskspacefreekb_#{fs}") do
+    Facter.add("diskspace_free_kb_#{fs}") do
       confine kernel: supported_os
       setcode do
         freekb
