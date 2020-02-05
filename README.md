@@ -1,5 +1,7 @@
 # Diskspace facts
 
+[![Build Status](https://travis-ci.org/marcinbojko/puppet-diskspace.svg?branch=master)](https://travis-ci.org/marcinbojko/puppet-diskspace)
+
 ## Overview
 
 Creates facts for diskspace use and free space.  Special characters will be omitted from fact names.
