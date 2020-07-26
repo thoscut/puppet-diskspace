@@ -1,12 +1,12 @@
 {
   "name": "marcinbojko-diskspace",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "WhatsARanjit",
   "summary": "Facts for diskspace used and free",
   "license": "Apache-2.0",
-  "source": "https://github.com/WhatsARanjit/puppet-diskspace",
-  "project_page": "https://github.com/WhatsARanjit/puppet-diskspace",
-  "issues_url": "https://github.com/WhatsARanjit/puppet-diskspace/issues",
+  "source": "https://github.com/marcinbojko/puppet-diskspace",
+  "project_page": "https://github.com/marcinbojko/puppet-diskspace",
+  "issues_url": "https://github.com/marcinbojko/puppet-diskspace/issues",
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
@@ -20,7 +20,8 @@
         "4",
         "5",
         "6",
-        "7"
+        "7",
+        "8"
       ]
     },
     {
@@ -29,7 +30,8 @@
         "4",
         "5",
         "6",
-        "7"
+        "7",
+        "8"
       ]
     },
     {
@@ -38,7 +40,8 @@
         "4",
         "5",
         "6",
-        "7"
+        "7",
+        "8"
       ]
     },
     {
@@ -47,7 +50,8 @@
         "4",
         "5",
         "6",
-        "7"
+        "7",
+        "8"
       ]
     },
     {
@@ -63,7 +67,9 @@
       "operatingsystemrelease": [
         "6",
         "7",
-        "8"
+        "8",
+        "9",
+        "10"
       ]
     },
     {
@@ -73,7 +79,9 @@
         "12.04",
         "14.04",
         "16.04",
-        "18.04"
+        "18.04",
+        "19.10",
+        "20.04"
       ]
     },
     {
@@ -121,7 +129,7 @@
     "facter",
     "facts"
   ],
-  "pdk-version": "1.16.0",
-  "template-url": "pdk-default#1.16.0",
-  "template-ref": "tags/1.16.0-0-gaf44904"
+  "pdk-version": "1.18.1",
+  "template-url": "pdk-default#1.18.1",
+  "template-ref": "tags/1.18.1-0-g3d2e75c"
 }
