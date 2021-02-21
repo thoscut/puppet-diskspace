@@ -1,6 +1,6 @@
 {
   "name": "marcinbojko-diskspace",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "WhatsARanjit",
   "summary": "Facts for diskspace used and free",
   "license": "Apache-2.0",
@@ -81,7 +81,8 @@
         "16.04",
         "18.04",
         "19.10",
-        "20.04"
+        "20.04",
+        "20.10"
       ]
     },
     {

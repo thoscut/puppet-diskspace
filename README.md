@@ -48,3 +48,7 @@ Filesystems entitled ```/``` will be listed as ```root``` instead.
 "diskspace_used_kb_c": 47460272,
 "diskspace_used_percent_c": 66,
 ```
+
+## Authors
+
+Forked from: [https://github.com/WhatsARanjit/puppet-diskspace](https://github.com/WhatsARanjit/puppet-diskspace)
