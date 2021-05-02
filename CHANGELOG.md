@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.2.4 - 2021-05-02
+
+* upgraded pdk to version 2.1.0
+
 ## Release 0.2.3 - 2021-02-21
 
 * added support for Ubuntu 20.10
