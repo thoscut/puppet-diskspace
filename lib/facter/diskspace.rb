@@ -24,7 +24,7 @@ when 'SunOS'
   fmatch  = 4
   tmatch  = 2  # total size
 when 'windows'
-  df      = 'C:\Windows\System32\wbem\WMIC.exe logicaldisk get deviceid,freespace,size'
+  df      = 'powershell.exe -noprofile -Command "Get-CimInstance -Class win32_logicaldisk | Select-Object DeviceID,FreeSpace,Size"'
   pattern = '^([A-Z]:)\s+(\d+)\s+(\d+)'
   dmatch  = 1
   fmatch  = 2
